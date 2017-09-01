@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Subscription extends Model
 {
@@ -14,7 +15,6 @@ class Subscription extends Model
          * @var array
          */
         protected $fillable = [
-            'id_subscription',
             'subscriber_id',
             'author_id',
         ];
@@ -27,4 +27,9 @@ class Subscription extends Model
         protected $hidden = [
             
         ];
+
+        public function articles()
+        {
+           return $this->hasMany('App\Article');
+        }
 }

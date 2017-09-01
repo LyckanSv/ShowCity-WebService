@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
@@ -14,12 +15,11 @@ class Article extends Model
          * @var array
          */
         protected $fillable = [
-            'id_article',
             'title',
             'description',
             'image_article',
             'score',
-            'double',
+            'user_id',
             
         ];
     
@@ -31,4 +31,6 @@ class Article extends Model
         protected $hidden = [
             
         ];
+
+        
 }

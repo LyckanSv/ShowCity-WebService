@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\User;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -14,7 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $article = Article::all();
+        return array("articles"=> $article);
     }
 
     /**
@@ -35,7 +37,15 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new Article;
+        $article->title = $request->title;
+        $article->description = $request->description;
+        $article->image_article = $request->image_article;
+        $article->score = $request->score;
+        $article->user_id = $request->author;
+        $article->save();
+        return "Ok :)";
+
     }
 
     /**
@@ -46,7 +56,11 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        $user = User::find($article->id);
+        $article = $user->articles;
+        $user -> $article;
+        return array("users"=> $user);
+
     }
 
     /**
@@ -80,6 +94,6 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        
     }
 }

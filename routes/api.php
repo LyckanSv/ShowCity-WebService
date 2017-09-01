@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('v1/users', 'UserController', 
+['onli' => ['index', 'store', 'show', 'update', 'destroy']]);
+
+Route::resource('v1/articles', 'ArticleController', 
+['onli' => ['index', 'store', 'show', 'update', 'destroy']]);
+
+Route::resource('v1/subscriptions', 'SubscriptionController', 
+['onli' => ['index', 'store', 'show', 'update', 'destroy']]);
